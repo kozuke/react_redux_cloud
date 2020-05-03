@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // 関数Component
 const App = () => {
   const profiles = [
-    { name: "taro", age: 10 },
+    { name: "taro", age: 1241 },
     { name: "Hanako", age: 1000 },
-    { name: "gomi" },
+    { name: "Melinda", age: 3 },
   ]
   return (
     <React.Fragment>
@@ -24,9 +25,9 @@ const App = () => {
 const User = (props) => {
   return <div>Hi, i am {props.name}!, and {props.age} years old!</div>
 }
-
-User.defaultProps = {
-  age: 1
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 export default App;
