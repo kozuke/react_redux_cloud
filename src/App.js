@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
-
-// クラスComponent
-// class App extends Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <lable htmlFor="foo">foo</lable>
-//         <input type="text" onChange={() => {console.log("I am clicked!")}}/>
-//       </React.Fragment>
-//     )
-//   }
-// }
+import React from 'react';
 
 // 関数Component
 const App = () => {
+  const profiles = [
+    { name: "taro", age: 10 },
+    { name: "Hanako", age: 1000 },
+    { name: "gomi" },
+  ]
   return (
     <React.Fragment>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
+        })
+      }
+      {/* Userに大してnameのpropsを与えている。 */}
+      {/* <User name={"Taro"} age={10}/>
+      <User name={"Hanako"} age={1000}/> */}
     </React.Fragment>
   )
 }
 
-const Cat = () => {
-  return <div>Meow!</div>
+const User = (props) => {
+  return <div>Hi, i am {props.name}!, and {props.age} years old!</div>
+}
+
+User.defaultProps = {
+  age: 1
 }
 
 export default App;
